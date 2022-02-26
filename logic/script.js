@@ -86,7 +86,7 @@ let index = 0;
 const slider = () =>{
     
 
-    sliderIMG.src = `../ThailandSite/styles/images/slider${index}.jpg`;
+    sliderIMG.src = `styles/images/slider${index}.jpg`;
     place.textContent = places[index].place;
     paragraph.textContent = places[index].description;
     if(index>0){
