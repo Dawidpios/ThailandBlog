@@ -55,7 +55,7 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background: linear-gradient(to right bottom, rgba(71, 239, 255, 0.2), rgba(170, 228, 226, 0.2)), url("styles/images/header.jpg");
+  background:url("styles/images/header.jpg");
   color: white;
 }
 
