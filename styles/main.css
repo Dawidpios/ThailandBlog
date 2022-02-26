@@ -1,0 +1,155 @@
+.Nav {
+  position: fixed;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  width: 100%;
+  height: 10%;
+  background: transparent;
+  color: white;
+  z-index: 5;
+  border-bottom: 1px solid white;
+  -webkit-transition: .6s ease-out;
+  transition: .6s ease-out;
+}
+
+.Nav__ul {
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  list-style: none;
+  text-transform: uppercase;
+}
+
+.Nav__ul li {
+  font-size: 1.8rem;
+}
+
+.Nav__ul li:hover {
+  cursor: pointer;
+}
+
+.active {
+  background: rgba(245, 246, 255, 0.9);
+  border: none;
+  width: 100%;
+  color: black;
+}
+
+.Header {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: -webkit-gradient(linear, left top, right bottom, from(rgba(71, 239, 255, 0.2)), to(rgba(170, 228, 226, 0.2))), url("/ThailandSite/styles/images/header.jpg");
+  background: linear-gradient(to right bottom, rgba(71, 239, 255, 0.2), rgba(170, 228, 226, 0.2)), url("/ThailandSite/styles/images/header.jpg");
+  color: white;
+}
+
+.Header__ImageContainer {
+  margin-top: 5%;
+  width: 25%;
+  height: 60%;
+  -webkit-box-shadow: 3px 3px 40px -1px #42445a;
+          box-shadow: 3px 3px 40px -1px #42445a;
+  -webkit-transition: .6s ease-out;
+  transition: .6s ease-out;
+}
+
+.Header__ImageContainer img {
+  width: 100%;
+  height: 100%;
+  -webkit-transition: .6s ease-out;
+  transition: .6s ease-out;
+}
+
+.Header__Section {
+  width: 35%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.Header__Section__h1 {
+  font-size: 5rem;
+  margin: 1.2rem;
+  text-transform: uppercase;
+  letter-spacing: .3rem;
+  -webkit-transition: .6s ease-out;
+  transition: .6s ease-out;
+}
+
+.Header__Section__p {
+  width: 100%;
+  height: 40%;
+  font-size: 1.8rem;
+  text-shadow: -1px -1px 1px rgba(255, 255, 255, 0.1), 1px 1px 1px rgba(0, 0, 0, 0.5);
+  text-align: justify;
+}
+
+.Header__Section__Button {
+  width: 25%;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  font-size: 1.8rem;
+  padding: 1rem;
+  margin: 2.8rem 0 0 0;
+  border: none;
+  border-radius: 1.5rem;
+}
+
+.Header__Section__Button:hover {
+  cursor: pointer;
+}
+
+.Header__sliderNumbers ul {
+  height: 100%;
+  list-style: none;
+}
+
+.Header__sliderNumbers ul li {
+  font-size: 1rem;
+  width: 25%;
+  height: 100%;
+  color: white;
+  border: .1rem solid white;
+  border-radius: 100%;
+  margin: 3rem;
+  text-align: center;
+  padding: 1rem;
+  background-color: transparent;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-size: 62.5%;
+}
+
+body {
+  width: 100vw;
+  min-height: 200vh;
+  overflow-x: hidden;
+}
+/*# sourceMappingURL=main.css.map */

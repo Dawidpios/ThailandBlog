@@ -1,0 +1,43 @@
+.Nav{
+    position: fixed;
+    left:50%;
+    transform:translateX(-50%);
+    width:100%;
+    height: 10%;
+    background: transparent;
+    color:white;
+    z-index:5;
+    border-bottom:1px solid white;
+    transition: .6s ease-out;
+
+&__ul{
+
+    width:100%;
+    height: 100%;
+
+    display: flex;
+    justify-content: space-around;
+    align-items:center;
+    
+    list-style: none;
+    text-transform:uppercase;
+   
+    & li{
+        font-size:1.8rem;
+       
+
+        &:hover{
+            cursor: pointer;
+        }
+      
+    }
+
+}
+}
+
+.active{
+    background:rgba(245, 246, 255,.9);
+    border:none;
+    width:100%;
+    color:black;
+}

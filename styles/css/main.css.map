@@ -1,0 +1,12 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "main.scss",
+        "navigation/_nav.scss",
+        "header/_header.scss",
+        "variables/_variables.scss"
+    ],
+    "names": [],
+    "file": "main.css"
+}
