@@ -50,7 +50,7 @@ const places = [
         Error nulla aspernatur modi a dignissimos dolore iusto voluptas soluta praesentium dolorem est labore unde facere voluptates, suscipit beatae enim quos similique ipsam fugiat voluptate? Dignissimos laudantium asperiores provident. Qui?
         In dolor molestiae temporibus itaque quod esse. Error molestiae nulla ipsa deserunt recusandae minus eaque consectetur quae corporis? Aut excepturi magnam quam esse fuga pariatur ducimus dolorum atque ipsum rem.
         Dolore maxime cum aut officia eveniet cumque reiciendis officiis minus iure harum. Accusantium, iusto blanditiis reiciendis nemo libero magnam similique fuga possimus dolorum explicabo quaerat et eius tempore! Dignissimos, incidunt.
-        Eaque, aperiam laboriosam? Iusto laborum doloribus perspiciatis, repellendus sed reiciendis. Consequuntur voluptatibus rem assumenda beatae quod maxime distinctio tempore temporibus illo harum? Numquam voluptas incidunt similique amet vitae totam deserunt?`,
+      `,
     },
     {
         id:4,
@@ -96,10 +96,10 @@ const slider = () =>{
     if(index===0){
         sliderList.forEach(e=>{e.style.backgroundColor = "transparent"})
     }
-    sliderList[index].style.backgroundColor = "rgba(247, 249, 246)";
+    sliderList[index].style.backgroundColor = "#B07590";
    
    
-    index++
+    ++index
    
     if(index>places.length-1){
         // sliderList.forEach(e=>{e.style.backgroundColor = "transparent"})
@@ -111,4 +111,4 @@ const slider = () =>{
     
 }
 slider()
-setInterval(slider, 7000);
+setInterval(slider, 1000);
