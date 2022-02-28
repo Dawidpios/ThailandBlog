@@ -111,4 +111,4 @@ const slider = () =>{
     
 }
 slider()
-setInterval(slider, 1000);
+setInterval(slider, 8000);
