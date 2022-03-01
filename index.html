@@ -1,13 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles/main.css" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- TOP BAR ICON -->
+    <link rel="icon" href="./images/Covid.svg" type="image/x-icon">
+    
+    <!-- Articles: -->
+    <link rel="stylesheet" href="./styles/style.css">
+    <script src="./logic/articles.js" defer></script>
+
     <title>Everything about Thailand</title>
 </head>
+
 <body>
     <Nav class="Nav">
         <ul class="Nav__ul">
@@ -19,15 +29,15 @@
         </ul>
     </Nav>
     <header class="Header">
-        <div class="Header__ImageContainer"><img class="Header__sliderIMG" src="styles/images/slider0.jpg"/></div>
+        <div class="Header__ImageContainer"><img class="Header__sliderIMG" src="styles/images/slider0.jpg" /></div>
         <section class="Header__Section">
             <h1 class="Header__Section__h1"></h1>
             <p class="Header__Section__p"></p>
             <button class="Header__Section__Button">Read more</button>
         </section>
-        
+
         <div class="Header__sliderNumbers">
-            <ul >
+            <ul>
                 <li class="slider-list"></li>
                 <li class="slider-list"></li>
                 <li class="slider-list"></li>
@@ -38,6 +48,20 @@
             </ul>
         </div>
     </header>
+
+    <h1 class="main-header dark">RECENT ARTICLES</h1>
+    <hr class="line line-dark" />
+    <main class="articles">
+
+    </main>
+    <footer class="about-us">
+        <h3 class="main-header white">
+            ABOUT US
+        </h3>
+        <hr class="line line-white">
+    </footer>
+
     <script src="logic/script.js"></script>
 </body>
+
 </html>
