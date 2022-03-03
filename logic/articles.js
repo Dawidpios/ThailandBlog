@@ -194,7 +194,7 @@ read_more_buttons.forEach((button, id) => {
         current_article.classList.add('slide-down');
 
         article.scrollIntoView();
-        window.scrollBy(0, -70);
+        window.scrollBy(0, -100);
 
       } else if (id !== number) {
         butt.classList.remove('disapeared');
