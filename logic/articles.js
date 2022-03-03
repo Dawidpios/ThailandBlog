@@ -76,6 +76,10 @@ const DOMArticles = document.querySelector('.articles');
 const max_short_description_size = 300;
 
 const refresh_articles = articles.forEach((el) => {
+
+  const article = document.createElement('article');
+
+
   // Add img with button
   const article_img = document.createElement('img');
   article_img.classList.add('article-img');
@@ -90,6 +94,8 @@ const refresh_articles = articles.forEach((el) => {
   // read_more.classList.add('disapeared');
   read_more.innerText = "Read more";
 
+
+
   const article_logo = document.createElement('figure');
   article_logo.classList.add('article-img');
   article_logo.appendChild(article_img);
@@ -101,6 +107,7 @@ const refresh_articles = articles.forEach((el) => {
   header.classList.add('article-header');
   header.innerText = el.header;
 
+  header.id = 'article-header' + el.id;
 
   const description = document.createElement('p');
   description.classList.add('article-description');
@@ -142,7 +149,7 @@ const refresh_articles = articles.forEach((el) => {
 
 
   // Create article
-  const article = document.createElement('article');
+
   article.classList.add('short-article');
   // article.classList.add('full-article');
 
@@ -162,20 +169,46 @@ read_more_buttons.forEach((button, id) => {
     button.classList.add('disapeared');
     button.parentElement.classList.add('article-img-slide')
     console.log('ok');
+    const article = button.parentElement.parentElement;
     const article_img = button.parentElement.querySelector('.article-img');
     const article_description = button.parentElement.parentElement.querySelector('.article-content').querySelector('.article-description');
 
     // article_description.innerHTML = `<p class="article-description-full">${articles[id].description}</p>`;
 
     read_more_buttons.forEach((butt, number) => {
-      if (id !== number) {
+      if (id === number) {
+        butt.classList.remove('show');
+
+
+        moreTextLoad(article_description, articles[id].description);
+        longText = true;
+        const article_height = button.parentElement.parentElement.querySelector('.article-content').querySelector('.article-description-full').clientHeight;
+        article_img.style.transition = `transform 1s`;
+        article_img.style.transform = `translateY(calc(${(article_height) / 3}px))`;
+        console.log(article_height / 2);
+        console.log(article_description.clientHeight);
+
+        const current_article = butt.parentElement.parentElement;
+
+        // current_article.classList.remove('slide-up');
+        current_article.classList.add('slide-down');
+
+        article.scrollIntoView();
+        window.scrollBy(0, -70);
+
+      } else if (id !== number) {
         butt.classList.remove('disapeared');
         butt.classList.add('show');
+
+        const current_article = butt.parentElement.parentElement;
+
+        current_article.classList.remove('slide-down');
+        // current_article.classList.add('slide-up');
+
         const current_article_img = butt.parentElement.querySelector('.article-img');
 
         const current_article_description = butt.parentElement.parentElement.querySelector('.article-content').querySelector('.article-description');
-        current_article_description.parentElement.classList.remove('slide-down');
-        current_article_description.parentElement.classList.add('slide-up');
+
 
         current_article_img.style.transition = `transform 1s`;
         current_article_img.style.transform = `translateY(calc(0px))`;
@@ -185,47 +218,10 @@ read_more_buttons.forEach((button, id) => {
             shortTextLoad(current_article_description, articles[number].description);
           }
         }
-
-      } else {
-        butt.classList.remove('show');
-        moreTextLoad(article_description, articles[id].description);
-        longText = true;
-        const article_height = button.parentElement.parentElement.querySelector('.article-content').querySelector('.article-description-full').clientHeight;
-        article_img.style.transition = `transform 1s`;
-        article_img.style.transform = `translateY(calc(${(article_height) / 2}px))`;
-        console.log(article_height / 2);
-        console.log(article_description.clientHeight);
-
-        article_description.parentElement.classList.remove('slide-up');
-        article_description.parentElement.classList.add('slide-down');
       }
     })
-
-
-
   })
 });
-
-// function moreTextLoad(article_description, full_text) {
-//   for (let i = max_short_description_size; i < full_text.length; i++) {
-//     setTimeout(function() {
-
-//       let text = full_text.substring(0, i + 1);
-//       if (text.length !== full_text.length) {
-//         text += '...';
-//       }
-//       // console.log('text length', text.length, 'full text length', full_text.length);
-//       // console.log(text);
-
-
-
-//       article_description.innerHTML = `<p class="article-description-full"></p>`;
-//       article_description.firstChild.innerHTML = text;
-//       // console.log(text);
-//     }, 300);
-
-//   }
-// }
 
 
 function moreTextLoad(article_description, full_text) {
@@ -248,9 +244,6 @@ function moreTextLoad(article_description, full_text) {
       } else if (i === text.length - 1) {
         article_description.firstChild.innerHTML = text;
       }
-
-      // console.log(text);
-
     }
   }
   loadText();
@@ -270,12 +263,11 @@ function shortTextLoad(article_description, full_text) {
       if (i % signsToAppend === 0) {
         article_description.innerHTML = `<p class="article-description-full"></p>`;
         article_description.firstChild.innerHTML = text;
-        await sleep(10);
+        // await sleep(0);
         // console.log(i, i%100);
       } else if (i === text.length - 1) {
         article_description.firstChild.innerHTML = text;
       }
-      // console.log(text);
     }
   }
   splitText();
