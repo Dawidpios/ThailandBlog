@@ -193,7 +193,8 @@ read_more_buttons.forEach((button, id) => {
         // current_article.classList.remove('slide-up');
         current_article.classList.add('slide-down');
 
-        const yOffset = -80;
+        const yOffset = -window.innerHeight * 0.1;
+        // console.log(yOffset);
         const y = current_article.getBoundingClientRect().top + window.pageYOffset + yOffset;
         window.scrollTo({ top: y, behavior: "smooth" });
 
