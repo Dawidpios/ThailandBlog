@@ -193,8 +193,9 @@ read_more_buttons.forEach((button, id) => {
         // current_article.classList.remove('slide-up');
         current_article.classList.add('slide-down');
 
-        article.scrollIntoView();
-        window.scrollBy(0, -100);
+        const yOffset = -80;
+        const y = current_article.getBoundingClientRect().top + window.pageYOffset + yOffset;
+        window.scrollTo({ top: y, behavior: "smooth" });
 
       } else if (id !== number) {
         butt.classList.remove('disapeared');
