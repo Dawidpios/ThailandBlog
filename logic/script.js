@@ -112,3 +112,16 @@ const slider = () =>{
 }
 slider()
 setInterval(slider, 8000);
+
+
+const Navigation = document.querySelector(".Nav__ul");
+Navigation.addEventListener("click",(e)=>{
+ if(e.target.classList.contains("nav_link") ){
+     const target = document.getElementById(`${e.target.getAttribute("href")}`)
+     target.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+        inline: "nearest",
+     })
+ }
+})
