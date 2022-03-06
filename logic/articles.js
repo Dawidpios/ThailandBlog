@@ -75,86 +75,60 @@ const articles = [
 const DOMArticles = document.querySelector('.articles');
 const max_short_description_size = 300;
 
-const refresh_articles = articles.forEach((el) => {
+function createElement(elementType, className = null, innerText = null, id = null) {
+  const el = document.createElement(elementType);
+  el.classList.add(className);
+  el.innerText = innerText;
+  if (id !== null) {
+    el.id = id;
+  }
+  return el;
+}
 
-  const article = document.createElement('article');
+articles.forEach((el) => {
 
+  const article = createElement('article', 'short-article');
 
-  // Add img with button
-  const article_img = document.createElement('img');
-  article_img.classList.add('article-img');
+  // Img with button
+
+  const article_img = createElement('img', 'article-img');
   article_img.alt = el.header;
-  // article_img.classList.add('article-img-slide');
-
-
   article_img.src = `./images/${el.img}`;
 
-  const read_more = document.createElement('button');
-  read_more.classList.add('read-more-button');
-  // read_more.classList.add('disapeared');
-  read_more.innerText = "Read more";
+  const read_more_button = createElement('button', 'read-more-button', 'Read more');
 
-
-
-  const article_logo = document.createElement('figure');
-  article_logo.classList.add('article-img');
+  const article_logo = createElement('figure', 'article-img');
   article_logo.appendChild(article_img);
-  article_logo.appendChild(read_more);
+  article_logo.appendChild(read_more_button);
 
   // Add Short article content
 
-  const header = document.createElement('h2');
-  header.classList.add('article-header');
-  header.innerText = el.header;
-
-  header.id = 'article-header' + el.id;
-
-  const description = document.createElement('p');
-  description.classList.add('article-description');
+  const header = createElement('h2', 'article-header', el.header, el.id);
   const short_description = el.description.substring(0, max_short_description_size) + '...';
-  description.innerText = short_description;
+  const description = createElement('p', 'article-description', short_description);
+  const date = createElement('div', 'date', el.date);
+  const author = createElement('div', 'author', el.author);
+  const info = createElement('div', 'info');
 
-  const date = document.createElement('div');
-  date.classList.add('date');
-  date.innerText = el.date;
-
-  const author = document.createElement('div');
-  author.classList.add('author');
-  author.innerText = el.author;
-
-  const info = document.createElement('div');
-  info.classList.add('info');
   info.appendChild(date);
   info.appendChild(author);
 
-  const tags = document.createElement('div');
-  tags.classList.add('tags');
-
+  const tags = createElement('div', 'tags');
   el.tags.forEach((element) => {
-    const tag = document.createElement('p');
-    tag.innerText = element;
+    const tag = createElement('p', null, element);
     tags.appendChild(tag);
   })
 
-  const article_footer = document.createElement('div');
-  article_footer.classList.add('article-footer');
+  const article_footer = createElement('div', 'article-footer');
   article_footer.appendChild(info);
   article_footer.appendChild(tags);
 
-  const short_article_content = document.createElement('div');
-  short_article_content.classList.add('article-content');
+  const short_article_content = createElement('div', 'article-content');
   short_article_content.appendChild(header);
   short_article_content.appendChild(description);
   short_article_content.appendChild(article_footer);
 
-
-  // Create article
-
-  article.classList.add('short-article');
-  // article.classList.add('full-article');
-
-  // test
-
+  // Create full article
 
   article.appendChild(article_logo);
   article.appendChild(short_article_content);
@@ -168,33 +142,28 @@ read_more_buttons.forEach((button, id) => {
   button.addEventListener('click', () => {
     button.classList.add('disapeared');
     button.parentElement.classList.add('article-img-slide')
-    console.log('ok');
     const article = button.parentElement.parentElement;
     const article_img = button.parentElement.querySelector('.article-img');
-    const article_description = button.parentElement.parentElement.querySelector('.article-content').querySelector('.article-description');
-
-    // article_description.innerHTML = `<p class="article-description-full">${articles[id].description}</p>`;
+    const article_description = article.querySelector('.article-content').querySelector('.article-description');
 
     read_more_buttons.forEach((butt, number) => {
       if (id === number) {
         butt.classList.remove('show');
 
-
         moreTextLoad(article_description, articles[id].description);
-        longText = true;
-        const article_height = button.parentElement.parentElement.querySelector('.article-content').querySelector('.article-description-full').clientHeight;
+
+        const article_transform = 50;
+        
         article_img.style.transition = `transform 1s`;
-        article_img.style.transform = `translateY(calc(${(article_height) / 3}px))`;
-        console.log(article_height / 2);
-        console.log(article_description.clientHeight);
+        article_img.style.transform = `translateY(calc(${article_transform}px))`;
 
         const current_article = butt.parentElement.parentElement;
 
-        // current_article.classList.remove('slide-up');
         current_article.classList.add('slide-down');
 
+        // Go to begining of article
+
         const yOffset = -window.innerHeight * 0.1;
-        // console.log(yOffset);
         const y = current_article.getBoundingClientRect().top + window.pageYOffset + yOffset;
         window.scrollTo({ top: y, behavior: "smooth" });
 
@@ -203,19 +172,14 @@ read_more_buttons.forEach((button, id) => {
         butt.classList.add('show');
 
         const current_article = butt.parentElement.parentElement;
-
         current_article.classList.remove('slide-down');
-        // current_article.classList.add('slide-up');
 
         const current_article_img = butt.parentElement.querySelector('.article-img');
-
         const current_article_description = butt.parentElement.parentElement.querySelector('.article-content').querySelector('.article-description');
-
 
         current_article_img.style.transition = `transform 1s`;
         current_article_img.style.transform = `translateY(calc(0px))`;
         if (current_article_description.firstChild.firstChild != undefined) {
-          console.log(current_article_description.firstChild.firstChild.length, articles[number].description.length);
           if (current_article_description.firstChild.firstChild.length === articles[number].description.length) {
             shortTextLoad(current_article_description, articles[number].description);
           }

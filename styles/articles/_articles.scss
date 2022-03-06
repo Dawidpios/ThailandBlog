@@ -33,6 +33,7 @@
         font-size: $read-more-button-font-size;
         font-weight: 400;
         transition: background 0.8s;
+        font-family: $main-font-family;
 
         &:hover {
           background: rgba(255, 255, 255, 0.699);
